@@ -317,8 +317,9 @@ function WorkCard({ work }: { work: Work }) {
 
   // p5.js sketch
   const sketch = (p: P5Instance) => {
-  const w = 800;
-  const h = 600;
+  // レスポンシブなキャンバスサイズ
+  let canvasWidth: number;
+  let canvasHeight: number;
 
   let autoRotate = true;
   let rotationAngle = 0;
@@ -331,10 +332,56 @@ function WorkCard({ work }: { work: Work }) {
   let lastMouseX = 0;
   let lastMouseY = 0;
   let mouseIdleTime = 0;
-  let maxIdleTime = 120; // 2秒後に自動回転再開（60fps想定）
+  let maxIdleTime = 120;
+
+  // タッチ関連の変数
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let isTouch = false;
+
+  // キャンバスサイズを計算する関数
+  const calculateCanvasSize = () => {
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+      // スマホの場合はビューポートの90%、最大400px
+      canvasWidth = Math.min(window.innerWidth * 0.9, 400);
+      canvasHeight = Math.min(window.innerHeight * 0.5, 400);
+    } else {
+      // デスクトップの場合は元のサイズ
+      canvasWidth = 800;
+      canvasHeight = 600;
+    }
+  };
 
   p.setup = () => {
-    p.createCanvas(w, h, p.WEBGL);
+    calculateCanvasSize();
+    const canvas = p.createCanvas(canvasWidth, canvasHeight, p.WEBGL);
+
+    // キャンバス要素にタッチイベントリスナーを追加
+    const canvasElement = canvas.elt as HTMLCanvasElement;
+
+    // タッチイベントでのスクロール防止
+    canvasElement.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      isTouch = true;
+      const touch = e.touches[0];
+      touchStartX = touch.clientX;
+      touchStartY = touch.clientY;
+      autoRotate = false;
+      mouseIdleTime = 0;
+    }, { passive: false });
+
+    canvasElement.addEventListener('touchmove', (e) => {
+      e.preventDefault();
+      isDragging = true;
+    }, { passive: false });
+
+    canvasElement.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      isTouch = false;
+      isDragging = false;
+      mouseIdleTime = 0;
+    }, { passive: false });
 
     // 初期カメラ位置を設定
     let x = p.cos(rotationAngle) * cameraRadius;
@@ -346,51 +393,59 @@ function WorkCard({ work }: { work: Work }) {
     lastMouseY = p.mouseY;
   };
 
+  // ウィンドウリサイズ時の処理
+  p.windowResized = () => {
+    calculateCanvasSize();
+    p.resizeCanvas(canvasWidth, canvasHeight);
+  };
+
   p.draw = () => {
     p.background(0, 0, 0);
     p.ambientLight(100);
     p.directionalLight(255, 255, 255, -1, 0.5, -1);
 
-    // マウス操作の検出
-    if (p.mouseIsPressed) {
+    // マウス操作の検出（デスクトップ用）
+    if (!isTouch && p.mouseIsPressed) {
       if (p.mouseX !== lastMouseX || p.mouseY !== lastMouseY) {
         isDragging = true;
         autoRotate = false;
         mouseIdleTime = 0;
       }
-    } else {
+    } else if (!isTouch && !p.mouseIsPressed) {
       if (isDragging) {
         isDragging = false;
         mouseIdleTime = 0;
       }
+    }
 
-      // マウスが動いていない時間をカウント
-      if (!autoRotate) {
-        mouseIdleTime++;
-        if (mouseIdleTime > maxIdleTime) {
-          autoRotate = true;
-        }
+    // マウスが動いていない時間をカウント
+    if (!autoRotate && !isDragging && !isTouch) {
+      mouseIdleTime++;
+      if (mouseIdleTime > maxIdleTime) {
+        autoRotate = true;
       }
     }
 
     // 自動回転の実行
-    if (autoRotate && !isDragging) {
+    if (autoRotate && !isDragging && !isTouch) {
       rotationAngle += rotationSpeed;
       let x = p.cos(rotationAngle) * cameraRadius;
       let z = p.sin(rotationAngle) * cameraRadius;
       p.camera(x, cameraHeight, z, 0, 0, 0, 0, 1, 0);
     }
 
-    // マウス操作時のみorbitControlを有効にする
-    if (isDragging || !autoRotate) {
+    // インタラクション時のみorbitControlを有効にする
+    if (isDragging || (!autoRotate && !isTouch)) {
       p.orbitControl();
     }
 
     drawRoom();
     drawFurniture();
 
-    lastMouseX = p.mouseX;
-    lastMouseY = p.mouseY;
+    if (!isTouch) {
+      lastMouseX = p.mouseX;
+      lastMouseY = p.mouseY;
+    }
   };
 
   const drawRoom = () => {
@@ -595,7 +650,14 @@ function WorkCard({ work }: { work: Work }) {
           <div className="animate-fadeInUp space-y-12">
             <div className="max-w-5xl mx-auto">
               <div className="flex justify-center">
-                <P5Sketch width={800} height={800} className="rounded-lg border border-gray-200 shadow-sm" sketch={sketch} />
+                <div className="touch-none">
+                  <P5Sketch
+                    width={800}
+                    height={600}
+                    className="rounded-lg border border-gray-200 shadow-sm max-w-full h-auto"
+                    sketch={sketch}
+                  />
+                </div>
               </div>
             </div>
 
