@@ -676,9 +676,13 @@ function WorkCard({ work }: { work: Work }) {
                 <span className="text-sm text-gray-500 font-light">October 2021 - Present</span>
               </div>
               <p className="text-gray-600 font-light leading-relaxed">
-                ユーザビリティ評価手法の改善に関する研究プロジェクトに参加。機械学習を用いた
-                ユーザー行動分析システムの開発を担当。
+                触覚技術を活用した技能伝達に関する研究プロジェクトに参加し，企画から展示会向けのソフトウェアの開発までを担当しました．
               </p>
+              <ul className="list-disc list-inside ml-6">
+                  <li>iOS App Dev (Swift UI / AWS)</li>
+                  <li>VR App Dev (Unity)</li>
+                  <li>Web App Dev (Next.js / MUI / AWS)</li>
+              </ul>
             </div>
 
             <div className="group hover:bg-gray-50 p-6 rounded-lg transition-all duration-300">
@@ -690,9 +694,12 @@ function WorkCard({ work }: { work: Work }) {
                 <span className="text-sm text-gray-500 font-light">April 2021 - Present</span>
               </div>
               <p className="text-gray-600 font-light leading-relaxed">
-                モバイルアプリケーションの新機能デザインを担当。ユーザーリサーチから
-                プロトタイプ作成まで一貫してUXデザインプロセスを経験。
+                研究用のモバイルアプリケーションおよび数学教育向けのWebアプリケーションの開発を経験しました．
               </p>
+              <ul className="list-disc list-inside ml-6">
+                  <li>iOS App Dev (Swift UI)</li>
+                  <li>Web App Dev (Vue.js / Vuetify / Firebase)</li>
+              </ul>
             </div>
           </div>
         </div>
