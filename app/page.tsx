@@ -686,7 +686,7 @@ function WorkCard({ work }: { work: Work }) {
             <div className="relative">
             <div className="aspect-square rounded-lg overflow-hidden">
               <Image
-                src="/akira.jpg"
+                src="/akira.jpeg"
                 alt="Profile photo"
                 fill
                 className="object-cover"
