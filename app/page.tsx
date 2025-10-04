@@ -919,6 +919,19 @@ function WorkCard({ work }: { work: Work }) {
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-thin tracking-wider mb-16 text-center">Misc.</h2>
           <ul className="space-y-4 text-gray-600 font-light leading-relaxed list-disc list-inside">
+            <li>
+              東北大学データ科学国際共同大学院（GP-DS）プログラム採択 (April, 2025 - Present)
+              <div>
+                <a
+                  href="https://gp-ds.tohoku.ac.jp/ja/index.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline"
+                >
+                  https://gp-ds.tohoku.ac.jp/ja/index.html
+                </a>
+              </div>
+          </li>
           <li>
             TOEIC L&R score: 855 (October, 2023)
           </li>
