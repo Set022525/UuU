@@ -5,6 +5,7 @@ import P5Sketch, { type P5Instance } from '../components/P5Sketch';
 import Image from "next/image";
 import { ChevronDown, ExternalLink, Menu, X, BookOpen, Award, Briefcase, User, FolderOpen, MessageSquare, Star } from 'lucide-react';
 import { FaXTwitter, FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa6";
+import GlitchImage from '../components/GlitchImage';
 
 type Publication = {
   title: string;
@@ -685,12 +686,17 @@ function WorkCard({ work }: { work: Work }) {
             </div>
             <div className="relative">
             <div className="aspect-square rounded-lg overflow-hidden">
-              <Image
+              {/* <Image
                 src="/akira.jpeg"
                 alt="Profile photo"
                 fill
                 className="object-cover"
-              />
+              /> */}
+                <GlitchImage
+                  src="/akira.jpeg"
+                  alt="Profile photo"
+                  className="object-cover"
+                />
             </div>
             </div>
         </div>
