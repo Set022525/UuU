@@ -820,7 +820,7 @@ function WorkCard({ work }: { work: Work }) {
     <section id="awards" className="py-20 px-6 bg-gray-50">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-3xl font-thin tracking-wider mb-16 text-center">Awards</h2>
-        <ul className="space-y-4 text-gray-600 font-light leading-relaxed list-disc list-inside">
+        <ul className="space-y-4 text-gray-600 font-light leading-relaxed list-disc list-outside pl-6">
           <li>
             Interverse Virtual Reality Challenge (IVRC) 2025「豆|頁：なんかきられてももどるやつ」
             <ul className="list-disc list-inside ml-6">
@@ -913,12 +913,25 @@ function WorkCard({ work }: { work: Work }) {
       </div>
     </section>
 
-
       {/* Misc Section */}
       <section id="misc" className="py-20 px-6">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-thin tracking-wider mb-16 text-center">Misc.</h2>
-          <ul className="space-y-4 text-gray-600 font-light leading-relaxed list-disc list-inside">
+          <ul className="space-y-4 text-gray-600 font-light leading-relaxed list-disc list-outside pl-6">
+            <li>
+              市民公開講座 / 横浜市MICE次世代育成事業「CHI 2025 シンポジウム」学生委員
+              <div>
+                <a
+                  href="https://sigchi.jp/symposium/chi2025_symposium"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline"
+                >
+                  https://sigchi.jp/symposium/chi2025_symposium
+                </a>
+              </div>
+            </li>
+
             <li>
               東北大学データ科学国際共同大学院（GP-DS）プログラム採択 (April, 2025 - Present)
               <div>
@@ -931,17 +944,46 @@ function WorkCard({ work }: { work: Work }) {
                   https://gp-ds.tohoku.ac.jp/ja/index.html
                 </a>
               </div>
-          </li>
-          <li>
-            TOEIC L&R score: 855 (October, 2023)
-          </li>
+            </li>
 
-          <li>
-            WISS2024 学生ボランティア
-          </li>
-        </ul>
+            <li>
+              TOEIC L&R score: 855 (October, 2023)
+            </li>
+
+            <li>
+              WISS2024 学生ボランティア
+            </li>
+
+            <li>
+              SEAMEO Education Agenda and Blended Mode Training Programme<br />
+              ’LearnT-SMArET with Promotion of Scientific/Mathematical’<br />
+              "Problem-Solving and Computational Thinking Skills" スタッフ
+              <ul className="list-disc list-outside pl-8 mt-2 space-y-1">
+                <li>Seameo Recsam, Penang, Malaysia, 2019</li>
+                <li>
+                  Ryohei Miyadera, Daisuke Minematsu, Masanori Fukui, Yushi Nakaya, Yuji Sasaki, Jo Hagikura,
+                  Shintaro Kaimoto, Nazuki Terakawa, Keito Tanemura, <strong><u>Akira Murakami</u></strong>,
+                  Itsuki Kitagawa, Kazuya Hiramatsu
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              SEAMEO Education Agenda and Blended Mode Training Programme<br />
+              ’LearnT-SMArET with Promotion of Scientific/Mathematical’<br />
+              “Workshop on Enhancing Creativity through Transdisciplinary Mathematics Education” スタッフ
+              <ul className="list-disc list-outside pl-8 mt-2 space-y-1">
+                <li>Seameo Recsam, Penang, Malaysia, August 27–28, 2018</li>
+                <li>
+                  Ryohei Miyadera, Daisuke Minematsu, Masanori Fukui, Yushi Nakaya, Yuji Sasaki, Jo Hagikura,
+                  Shintaro Kaimoto, Nazuki Terakawa, Keito Tanemura, <strong><u>Akira Murakami</u></strong>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
       </section>
+
 
       {/* Contact Section */}
       <section id="contact" className="py-20 px-6 bg-gray-50">
