@@ -828,7 +828,7 @@ function WorkCard({ work }: { work: Work }) {
                   SEED Stageにおいて Unity賞，CRI・ミドルウェア賞，観客賞　受賞．
               </li>
               <li>
-                LEAP Stage進出（書類審査を通過した20作品中10作品が審査員により選出）．
+                LEAP Stage進出（書類応募96作品のうち，書類審査を通過した20作品から審査員により選出された10作品の一つ）．
               </li>
               <li>
                 メディア：<a
