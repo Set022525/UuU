@@ -3,9 +3,10 @@
 import { useState, useEffect } from 'react';
 import P5Sketch, { type P5Instance } from '../components/P5Sketch';
 import Image from "next/image";
-import { ChevronDown, ExternalLink, Menu, X, BookOpen, Award, Briefcase, User, FolderOpen, MessageSquare, Star } from 'lucide-react';
+import { ChevronDown, ExternalLink, Menu, X, BookOpen, Award, Briefcase, User, FolderOpen, MessageSquare, Star, ExternalLinkIcon } from 'lucide-react';
 import { FaXTwitter, FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa6";
 import GlitchImage from '../components/GlitchImage';
+import Link from 'next/link';
 
 type Publication = {
   title: string;
@@ -314,6 +315,7 @@ function WorkCard({ work }: { work: Work }) {
     { id: 'awards', label: 'Awards', icon: Award },
     { id: 'misc', label: 'Misc.', icon: Star },
     { id: 'contact', label: 'Contact', icon: MessageSquare },
+    { id: 'blog', label: 'Blog', icon: BookOpen, external: true },
   ];
 
   // p5.js sketch
@@ -606,18 +608,41 @@ function WorkCard({ work }: { work: Work }) {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
-            {navigationItems.map(({ id, label }) => (
-              <button
-                key={id}
-                onClick={() => scrollToSection(id)}
-                className={`text-sm font-light tracking-wide transition-all duration-300 hover:text-gray-600 ${
-                  activeSection === id ? 'text-black border-b border-black' : 'text-gray-500'
-                }`}
-              >
-                {label}
-              </button>
-            ))}
+            {navigationItems.map(({ id, label, external }) =>
+              external ? (
+                <Link
+                  key={id}
+                  href={`/${id}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`group inline-flex items-center gap-1 text-sm font-light tracking-wide transition-all duration-300 hover:text-gray-600 ${
+                    activeSection === id
+                      ? "text-black border-b border-black"
+                      : "text-gray-500"
+                  }`}
+                >
+                  {label}
+                  <ExternalLinkIcon
+                    size={14}
+                    strokeWidth={1.5}
+                    className="opacity-60 group-hover:opacity-100 transition-opacity duration-200"
+                    aria-hidden="true"
+                  />
+                </Link>
+              ) : (
+                <button
+                  key={id}
+                  onClick={() => scrollToSection(id)}
+                  className={`text-sm font-light tracking-wide transition-all duration-300 hover:text-gray-600 ${
+                    activeSection === id ? 'text-black border-b border-black' : 'text-gray-500'
+                  }`}
+                >
+                  {label}
+                </button>
+              )
+            )}
           </div>
+
 
           {/* Mobile Menu Button */}
           <button
