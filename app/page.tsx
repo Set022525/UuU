@@ -546,7 +546,7 @@ function WorkCard({ work }: { work: Work }) {
     p.box(40, 5, 40);
     p.pop();
     p.push();
-    p.translate(0, -30, -15);
+    p.translate(0, -30, 20);
     p.box(40, 35, 5);
     p.pop();
     for (let x = -15; x <= 15; x += 30) {
