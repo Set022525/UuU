@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import P5Sketch, { type P5Instance } from '../components/P5Sketch';
 import Image from "next/image";
-import { ChevronDown, ExternalLink, Menu, X, BookOpen, Award, Briefcase, User, FolderOpen, MessageSquare, Star, ExternalLinkIcon } from 'lucide-react';
+import { ChevronDown, ExternalLink, Menu, X, BookOpen, Award, Briefcase, User, FolderOpen, MessageSquare, Star, ExternalLinkIcon, NotebookPen, GraduationCap } from 'lucide-react';
 import { FaXTwitter, FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa6";
 import GlitchImage from '../components/GlitchImage';
 import Link from 'next/link';
@@ -308,14 +308,14 @@ function WorkCard({ work }: { work: Work }) {
 
   const navigationItems = [
     { id: 'about', label: 'About', icon: User },
-    { id: 'education', label: 'Education', icon: BookOpen },
+    { id: 'education', label: 'Education', icon: GraduationCap },
     { id: 'work', label: 'Work Experiences', icon: Briefcase },
     { id: 'publications', label: 'Publications', icon: BookOpen },
     { id: 'works', label: 'Works', icon: FolderOpen },
     { id: 'awards', label: 'Awards', icon: Award },
     { id: 'misc', label: 'Misc.', icon: Star },
     { id: 'contact', label: 'Contact', icon: MessageSquare },
-    { id: 'blog', label: 'Blog', icon: BookOpen, external: true },
+    { id: 'blog', label: 'Blog', icon: NotebookPen, external: true },
   ];
 
   // p5.js sketch
@@ -706,17 +706,11 @@ function WorkCard({ work }: { work: Work }) {
             <div className="space-y-6">
               <h3 className="text-2xl font-light tracking-wide">Akira MURAKAMI / 村上 聡</h3>
               <p className="text-gray-600 font-light leading-relaxed text-lg">
-                I am a master’s student at the ICD Lab, Tohoku University. I’m interested in the intersection of Architecture and Human-Computer Interaction (HCI).
+                I am a master’s student at the ICD Lab, Tohoku University. I am interested in the intersection of Architecture and Human-Computer Interaction (HCI).
               </p>
             </div>
             <div className="relative">
             <div className="aspect-square rounded-lg overflow-hidden">
-              {/* <Image
-                src="/akira.jpeg"
-                alt="Profile photo"
-                fill
-                className="object-cover"
-              /> */}
                 <GlitchImage
                   src="/akira.jpeg"
                   alt="Profile photo"
@@ -864,7 +858,11 @@ function WorkCard({ work }: { work: Work }) {
                 >
                   https://criware.info/ivrc-2025-seed/
                 </a>
+                </li>
+                <li>
+                LEAP Stageにおいて 市原えつこ賞，観客賞　受賞．
               </li>
+
             </ul>
           </li>
 
