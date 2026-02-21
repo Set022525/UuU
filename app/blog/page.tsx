@@ -55,7 +55,7 @@ export default function BlogPage() {
       <footer className="py-12 px-6 bg-white border-t border-gray-100">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-gray-500 font-thin tracking-wide">
-            © 2025 Akira Murakami. All rights reserved.
+            © 2026 Akira Murakami. All rights reserved.
           </p>
         </div>
       </footer>

@@ -107,15 +107,24 @@ const domesticJournals: Publication[] = [
   },
 ];
 
-const domesticConferences: Publication[] = [
+  const domesticConferences: Publication[] = [
   {
     title:
       "複数の音源対象を持つコンテンツの視聴における視線に応じた振動触覚提示手法",
     authors:
       "金井 美桜，藤田 和之，<strong><u>村上 聡</u></strong>，齋藤 五大，北村 喜文",
-    venue: "第30回日本バーチャルリアリティ学会大会 (VRSJ’25)，2025，大阪",
+    venue: "第30回日本バーチャルリアリティ学会大会 (VRSJ’25)，2025年9月，大阪",
     year: 2025,
     link: "https://conference.vrsj.org/ac2025/program/doc/3E2-06.pdf",
+  },
+  {
+    title:
+      "豆|頁：なんかきられてももどるやつ",
+    authors:
+      "菊池 勇吾, 金井 美桜, 佐々木 涼, <strong><u>村上 聡</u></strong>, 伊藤 勝徳, 尾形 優斗, 柴藤 りん, 佐藤 生琉, 西山 喜尋",
+    venue: "第30回日本バーチャルリアリティ学会大会 (VRSJ’25)，2025年9月，大阪",
+    year: 2025,
+    link: "https://conference.vrsj.org/ac2025/program/doc/IVRC-05.pdf",
   },
   {
     title: "折紙構造を用いた自走式・形態変化パーティションデバイス",
@@ -849,6 +858,17 @@ function WorkCard({ work }: { work: Work }) {
               <li>
                 LEAP Stage進出（書類応募96作品のうち，書類審査を通過した20作品から審査員により選出された10作品の一つ）．
               </li>
+
+                <ul className="list-disc list-inside ml-6">
+
+                  <a
+                    href="https://ivrc.net/2025/release2/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:underline"
+                  >
+                    https://ivrc.net/2025/release2/
+                  </a>
               <li>
                 メディア：<a
                   href="https://criware.info/ivrc-2025-seed/"
@@ -858,11 +878,22 @@ function WorkCard({ work }: { work: Work }) {
                 >
                   https://criware.info/ivrc-2025-seed/
                 </a>
-                </li>
+                  </li>
+              </ul>
+
                 <li>
                 LEAP Stageにおいて 市原えつこ賞，観客賞　受賞．
-              </li>
-
+                </li>
+                <ul className="list-disc list-inside ml-6">
+                    <a
+                      href="https://ivrc.net/2025/release3/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:underline"
+                    >
+                      https://ivrc.net/2025/release3/
+                    </a>
+                </ul>
             </ul>
           </li>
 
@@ -1084,7 +1115,7 @@ function WorkCard({ work }: { work: Work }) {
       <footer className="py-12 px-6 bg-white border-t border-gray-100">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-gray-500 font-thin tracking-wide">
-            © 2025 Akira Murakami. All rights reserved.
+            © 2026 Akira Murakami. All rights reserved.
           </p>
         </div>
       </footer>
